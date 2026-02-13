@@ -5,7 +5,7 @@ const path = require('path');
 const { execSync } = require('child_process');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 // Enable CORS and JSON parsing
 app.use(cors());
@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 const getGitInfo = () => {
     try {
         // Look for git info in the project root (one level up from backend/)
-        return execSync('git log -1 --format="%h - %an (%ar): %s"', { 
+        return execSync('git log -1 --format="%h - %an (%ar): %s"', {
             encoding: 'utf8',
             cwd: path.join(__dirname, '..')
         }).trim();
